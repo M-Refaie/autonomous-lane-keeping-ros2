@@ -1,0 +1,40 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 30
+
+    # Differential Drive Controller
+    diff_drive_controller:
+      type: diff_drive_controller/DiffDriveController
+
+diff_drive_controller:
+  ros__parameters:
+    # Wheel Separation and Radius (Must match your URDF properties)
+    wheel_separation: 0.30
+    wheel_radius: 0.07
+
+    # Joint Names (Must match your URDF joint names)
+    left_wheel_names: ['left_wheel_joint']
+    right_wheel_names: ['right_wheel_joint']
+
+    # Command and Odometry Topics
+    publish_rate: 30.0
+    cmd_vel_timeout: 0.5
+
+    # Odom Frame IDs
+    base_frame_id: base_link
+    odom_frame_id: odom
+
+    # Velocity and Acceleration Limits
+    # You may tune these based on simulation stability
+    linear:
+      x:
+        has_velocity_limits: true
+        max_velocity: 1.0
+        has_acceleration_limits: true
+        max_acceleration: 5.0
+    angular:
+      z:
+        has_velocity_limits: true
+        max_velocity: 2.0
+        has_acceleration_limits: true
+        max_acceleration: 5.0
